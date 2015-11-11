@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <title> Let's play a game...</title>
+        
+        <style type="text/css">
+            body {
+                font-family: Georgia, "Times New Roman", Times, serif;
+                color: yellow;
+                background-color: #C00000;
+                margin: 50px 100px 100px 100px;
+            }
+            
+            .text {
+                color:yellow;
+                text-align: center;
+            }
+            
+            h1 {
+                font-family: Helvetica, Geneva, Arial,
+                SunSans-Regular, sans-serif 
+            }
+            
+            p {
+                color: white;
+            }
+            
+            .image {
+                max-height: auto;
+                min-height: auto;
+                margin-top: 100px;
+                margin-left: 350px;
+            }
+    
+            button {
+            display: horizontal;
+            margin-left: 200px;
+            margin-right: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="text">
+            <h1>Lets do a little game...</h1>
+            <p>Which way is up?</p>
+        </section>
+    
+        <section id="button"> 
+            <button id = "button" onClick="turnImage()">Rotate</button>
+            <button class = "up" onClick="Guess()">Right way up!</button>
+            <button class = "next" onClick="nextImage()">Next Image...</button>
+        </section>
+
+        <section>
+        <img class="image" width="400px" src="http://www.kunstkopie.nl/kunst/keith_haring_11033/untitled_pele_poster_1988__h1342_hi.jpg">
+        </section>
+       
+        <script>
+            var angle= 0;
+            var turnImage = function() {
+                console.log('rotate(' +angle+'deg)')
+                angle=angle+90;
+                $('.image').css({transform: 'rotate(' +angle+'deg)'});
+                
+                if (angle==360){angle=0};
+            }
+            
+            var Guess= function() {
+                console.log(angle);
+                if (angle==0){alert('Totally right!')};
+            }
+            var counter= 0;
+            var my_images= [
+                "http://hedgehogsvsfoxes.com/new/wp-content/uploads/2015/02/keith_haring_windows_theme_by_impotentgrandpa-d4njqpe.jpg", 
+                "http://41.media.tumblr.com/tumblr_m6c0xvnZU01rz1s87o1_500.jpg", 
+                "http://www.giornalettismo.com/wp-content/uploads/2012/05/haring-keith-senza-titolo-1983.jpg"];
+            var nextImage= function () {
+                console.log('hello');
+                $('.image')[0].src= my_images[counter];
+                counter= (counter+1);
+                if (counter == 3){counter = 0;}
+            }
+        </script>
+    </body>
+</html>
+
